@@ -3,7 +3,7 @@ import { View, TextInput, Text, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import RNPickerSelect from 'react-native-picker-select';
 import tw from 'twrnc';
-import { COIN_API_BASE } from '../constants/CountryApi';
+import { COIN_API_BASE, COUNTRY_CONVERT_API_BASE } from '../constants/CountryApi';
 
 const CountryPicker = () => {
     const [countries, setCountries] = useState([]);
@@ -44,7 +44,7 @@ const CountryPicker = () => {
                 return;
             }
 
-            const response = await axios.get('https://api.fxratesapi.com/convert', {
+            const response = await axios.get(COUNTRY_CONVERT_API_BASE, {
                 params: {
                     from: selectedCountry,
                     to: selectedDestination,
